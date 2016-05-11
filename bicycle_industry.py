@@ -1,6 +1,9 @@
 
 
-class Bicycle(object):
+
+
+
+class bicycle(object):
    
     def __init__(self, model_name, weight, cost_to_produce):
         self.model_name = model_name
@@ -14,47 +17,64 @@ class Bicycle(object):
 if __name__ == '__main__':
 
     """ bike models """
-    bike1 = Bicycle("Trek", 20, 200)#refers to the __init__ method
-    bike2 = Bicycle("Kono", 40, 300)
-    bike3 = Bicycle("Speacialized", 35, 400)
-    bike4 = Bicycle("Schwinn", 20, 500)
-    bike5 = Bicycle("Cannon", 45, 600)
-    bike6 = Bicycle("Giant", 30, 700)
+    bike1 = bicycle("Trek", 20, 200)#refers to the __init__ method
+    bike2 = bicycle("Kono", 40, 300)
+    bike3 = bicycle("Speacialized", 35, 400)
+    bike4 = bicycle("Schwinn", 20, 500)
+    bike5 = bicycle("Cannon", 45, 600)
+    bike6 = bicycle("Giant", 30, 700)
 
 
+
+
+#------------------------------------------------------------------#
 
 
 
   
 class BikeShop(object):
    
-    def __init__(self, shop_name, shop_inventory):
+    def __init__(self, shop_name, shop_inventory, bike_markup):
         self.shop_name = shop_name
         self.shop_inventory = shop_inventory
+        self.bike_markup = bike_markup
+        self.profit_amount = 0
         
-"""inventory list"""
 inventory_list = [
     bike1, bike2, bike3, bike4, bike5, bike6
 ]
 
-bike_shop = BikeShop("Fun Cycles", inventory_list)
-print bike_shop.shop_name
+bike_shop = BikeShop("Fun Cycles", inventory_list, .20)
+
 
 """Print the initial inventory of the bike shop for each bike it carries."""
-print "Inventory" #/n adds a blank line
-print "-" * 20# prints dashes
+print "Bike Shop Inventory" #/n adds a blank line
+print "-" * 20
 for bike in range(len(inventory_list)):
-    print inventory_list[bike]#refers back to the customer class, the output of the keys are "trek weighs..."
+    print inventory_list[bike]
 
-
-
-
+def __repr__(bicycle):
+        return "{0}sells for {1}, {2} makes {3} ${4} off each sale .".format(
+            self.model_name, self.mark_up, self.shop_name, bike_profit)
+            
+sale_price=[]
+    
+print '\nSale Price After Markups'
+print '-' * 20
+for bike in range(len(inventory_list)):
+    sale_price = inventory_list[bike].cost_to_produce + inventory_list[bike].cost_to_produce * .20
+    
+    print sale_price
+  
+    
+    
+    
+    
+    
+#-------------------------------------------------------------#
 
 
 class Customer(object):
-    """
-    Customer attributes.
-    """
     def __init__(self, customer_name, customer_funds):
         self.customer_name = customer_name
         self.customer_funds = customer_funds
@@ -63,7 +83,7 @@ class Customer(object):
         return "{0} has ${1}.".format(
             self.customer_name, self.customer_funds)
             
-"""Create three customers"""
+
 customer1 = Customer("Joe", 200)
 customer2 = Customer("Bill", 500)
 customer3 = Customer("Dave", 1000)
@@ -94,10 +114,3 @@ for customer in range(len(customer_list)):
                 inventory_list[bike].model_name
             )
 print '-' * 20
-
-
-
-
-        
-
-    
