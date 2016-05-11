@@ -1,8 +1,3 @@
-
-
-
-
-
 class Bicycle(object):
    
     def __init__(self, model_name, weight, cost_to_produce):
@@ -27,13 +22,7 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
 #------------------------------------------------------------------#
-
-
 
 
 
@@ -72,24 +61,6 @@ class BikeShop(object):
             print("{} has an msrp is ${} and {} makes ${} off each sale.".format(bike.model_name, sale_price, self.shop_name, profit_amount))
 
 
-<<<<<<< HEAD
- 
-
-
-
-
-    
-    
-#-------------------------------------------------------------#
-
-
-
-
-
-
-
-
-=======
 inventory_list = [
     bike1, bike2, bike3, bike4, bike5, bike6
 ]
@@ -97,16 +68,21 @@ bike_shop = BikeShop("Fun Cycles", inventory_list, .20)
 bike_shop.print_inventory()
 
 expensive_shop = BikeShop("Expensive Cycles", inventory_list, .50)
+
+
+
+
     
 #-------------------------------------------------------------#
 
->>>>>>> d03ce0f3012fe659eea63f1e74fa571ec9921f18
+
+
+
 class Customer(object):
-    def __init__(self, customer_name, customer_funds, bicycle=0):
+    def __init__(self, customer_name, customer_funds):
         self.customer_name = customer_name
         self.customer_funds = customer_funds
-        self.bicycle=bicycle
-        
+
     def __repr__(self):
         return "{0} has ${1}.".format(
             self.customer_name, self.customer_funds)
@@ -145,29 +121,4 @@ for customer in customer_list:
     print '-' * 20
 
 print '-' * 20
-
-
-
-
-answers=[]
-print raw_input("what is your name")
-answers.append(raw_input)
-
-
-
-for a in answers:
-    if a == customer_list[customer].customer_name:
-        print raw_input("do you want to buy a bike?")
-
-
-
-
-
-    
-def purchase_bicycle(self, bicycle, sale_price):
-    """Customer purchases bicycle and reduces purchase fund"""
-    self.bicycle = bicycle
-    self.customer_funds -= sale_price
-    # Confirmation message
-    print "Congratulations {}, you purchased a {} for ${}.  You have ${} remaining of your bike purchase fund.".format(self.customer_name, bicycle.model_name, sale_price, self.customer_funs)
     
