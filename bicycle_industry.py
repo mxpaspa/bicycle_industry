@@ -3,26 +3,26 @@
 
 
 
-class bicycle(object):
+class Bicycle(object):
    
     def __init__(self, model_name, weight, cost_to_produce):
         self.model_name = model_name
         self.weight = weight
         self.cost_to_produce = cost_to_produce
 
-    def __repr__(self):# represents a printable version of the init method
+    def __repr__(self): # represents a printable version of the init method
         return "{0} weighs {1} pounds and costs ${2} to produce.".format(
             self.model_name, self.weight, self.cost_to_produce)
             
 if __name__ == '__main__':
 
     """ bike models """
-    bike1 = bicycle("Trek", 20, 200)#refers to the __init__ method
-    bike2 = bicycle("Kono", 40, 300)
-    bike3 = bicycle("Speacialized", 35, 400)
-    bike4 = bicycle("Schwinn", 20, 500)
-    bike5 = bicycle("Cannon", 45, 600)
-    bike6 = bicycle("Giant", 30, 700)
+    bike1 = Bicycle("Trek", 20, 200)#refers to the __init__ method
+    bike2 = Bicycle("Kono", 40, 300)
+    bike3 = Bicycle("Speacialized", 35, 400)
+    bike4 = Bicycle("Schwinn", 20, 500)
+    bike5 = Bicycle("Cannon", 45, 600)
+    bike6 = Bicycle("Giant", 30, 700)
 
 
 
@@ -45,32 +45,34 @@ class BikeShop(object):
         self.shop_inventory = shop_inventory
         self.bike_markup = bike_markup
         self.profit_amount = 0
-        
-inventory_list = [
-    bike1, bike2, bike3, bike4, bike5, bike6
-]
 
-bike_shop = BikeShop("Fun Cycles", inventory_list, .20)
+    def print_inventory(self):
+        """Print the initial inventory of the bike shop for each bike it carries."""
+        print "{} Inventory".format(self.shop_name)
+        print "-" * 20
+        for bike in self.shop_inventory: # bike will be set to the items in the array
+            print bike
+
+    def profit(self, bike):
+        if not bike in self.shop_inventory:
+            return None
+        return bike.cost_to_produce * self.bike_markup
+
+    def sale_price(self, bike):
+        if not bike in self.shop_inventory:
+            return None
+        return bike.cost_to_produce + self.profit(bike)
+
+    def print_markup(self):
+        print '\nSale Price After Markups'
+        print '-' * 20
+        for bike in self.shop_inventory:
+            profit_amount = self.profit(bike)
+            sale_price = self.sale_price(bike)
+            print("{} has an msrp is ${} and {} makes ${} off each sale.".format(bike.model_name, sale_price, self.shop_name, profit_amount))
 
 
-"""Print the initial inventory of the bike shop for each bike it carries."""
-print "Bike Shop Inventory" #/n adds a blank line
-print "-" * 20
-for bike in range(len(inventory_list)):
-    print inventory_list[bike]
-
-
-            
-sale_price=[]
-profit_amount=[]  
-print '\nSale Price After Markups'
-print '-' * 20
-for bike in range(len(inventory_list)):
-    sale_price = inventory_list[bike].cost_to_produce + inventory_list[bike].cost_to_produce * .20
-    profit_amount=sale_price-inventory_list[bike].cost_to_produce  
-    
-    print("{} has an msrp is ${} and {} makes ${} off each sale.".format(inventory_list[bike].model_name, sale_price, bike_shop.shop_name, profit_amount))
-
+<<<<<<< HEAD
  
 
 
@@ -87,6 +89,18 @@ for bike in range(len(inventory_list)):
 
 
 
+=======
+inventory_list = [
+    bike1, bike2, bike3, bike4, bike5, bike6
+]
+bike_shop = BikeShop("Fun Cycles", inventory_list, .20)
+bike_shop.print_inventory()
+
+expensive_shop = BikeShop("Expensive Cycles", inventory_list, .50)
+    
+#-------------------------------------------------------------#
+
+>>>>>>> d03ce0f3012fe659eea63f1e74fa571ec9921f18
 class Customer(object):
     def __init__(self, customer_name, customer_funds, bicycle=0):
         self.customer_name = customer_name
@@ -96,7 +110,15 @@ class Customer(object):
     def __repr__(self):
         return "{0} has ${1}.".format(
             self.customer_name, self.customer_funds)
-            
+
+    def can_afford(self, shop, bike):
+        bike_price = shop.sale_price(bike)
+        return self.customer_funds >= bike_price
+
+    def print_affordable_bikes(self, shop):
+        for bike in shop.shop_inventory:
+            if self.can_afford(shop, bike):
+                print "{0} can afford the {1}".format(self.customer_name, bike.model_name)
 
 customer1 = Customer("Joe", 200)
 customer2 = Customer("Bill", 500)
@@ -118,15 +140,10 @@ that each customer can afford at least one.
 """
 
 print '\nWhich bikes can they afford?'
-for customer in range(len(customer_list)):
+for customer in customer_list:
+    customer.print_affordable_bikes(bike_shop)
     print '-' * 20
-    for bike in range(len(inventory_list)):
-        if inventory_list[bike].cost_to_produce <= \
-                customer_list[customer].customer_funds:
-            print "{0} can afford the {1}".format(
-                customer_list[customer].customer_name,
-                inventory_list[bike].model_name
-            )
+
 print '-' * 20
 
 
