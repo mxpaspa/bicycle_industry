@@ -27,7 +27,13 @@ if __name__ == '__main__':
 
 
 
+
+
+
+
 #------------------------------------------------------------------#
+
+
 
 
 
@@ -66,17 +72,27 @@ for bike in range(len(inventory_list)):
     print("{} has an msrp is ${} and {} makes ${} off each sale.".format(inventory_list[bike].model_name, sale_price, bike_shop.shop_name, profit_amount))
 
  
-    
+
+
+
+
     
     
 #-------------------------------------------------------------#
 
 
+
+
+
+
+
+
 class Customer(object):
-    def __init__(self, customer_name, customer_funds):
+    def __init__(self, customer_name, customer_funds, bicycle=0):
         self.customer_name = customer_name
         self.customer_funds = customer_funds
-
+        self.bicycle=bicycle
+        
     def __repr__(self):
         return "{0} has ${1}.".format(
             self.customer_name, self.customer_funds)
@@ -112,3 +128,29 @@ for customer in range(len(customer_list)):
                 inventory_list[bike].model_name
             )
 print '-' * 20
+
+
+
+
+answers=[]
+print raw_input("what is your name")
+answers.append(raw_input)
+
+
+
+for a in answers:
+    if a == customer_list[customer].customer_name:
+        print raw_input("do you want to buy a bike?")
+
+
+
+
+
+    
+def purchase_bicycle(self, bicycle, sale_price):
+    """Customer purchases bicycle and reduces purchase fund"""
+    self.bicycle = bicycle
+    self.customer_funds -= sale_price
+    # Confirmation message
+    print "Congratulations {}, you purchased a {} for ${}.  You have ${} remaining of your bike purchase fund.".format(self.customer_name, bicycle.model_name, sale_price, self.customer_funs)
+    
