@@ -53,21 +53,19 @@ print "-" * 20
 for bike in range(len(inventory_list)):
     print inventory_list[bike]
 
-def __repr__(bicycle):
-        return "{0}sells for {1}, {2} makes {3} ${4} off each sale .".format(
-            self.model_name, self.mark_up, self.shop_name, bike_profit)
+
             
 sale_price=[]
-    
+profit_amount=[]  
 print '\nSale Price After Markups'
 print '-' * 20
 for bike in range(len(inventory_list)):
     sale_price = inventory_list[bike].cost_to_produce + inventory_list[bike].cost_to_produce * .20
+    profit_amount=sale_price-inventory_list[bike].cost_to_produce  
     
-    print sale_price
-  
-    
-    
+    print("{} has an msrp is ${} and {} makes ${} off each sale.".format(inventory_list[bike].model_name, sale_price, bike_shop.shop_name, profit_amount))
+
+ 
     
     
     
