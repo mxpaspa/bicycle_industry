@@ -122,3 +122,18 @@ for customer in customer_list:
 
 print '-' * 20
     
+class Bicycle_Manufacturers(object):
+    def __init__(self, manu_name, manu_model, manu_cost_to_produce, manu_margin_amount):
+        self.manu_name = manu_name
+        self.manu_modle = manu_model
+        self. manu_margin_amount = manu_margin_amount
+        
+        
+     
+
+    Bike_produced1 = Bicycle_Manufacturers("Trek", "Trek1", 850, .10)
+    Bike_produced2 = Bicycle_Manufacturers("Trek", "Trek2", 870, .10)
+    Bike_produced3 = Bicycle_Manufacturers("Trek", "Trek3", 890, .10)
+    
+model_range = [Bike_produced1, Bike_produced2, Bike_produced3]
+    def manu_sale_price(self,)
