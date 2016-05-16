@@ -64,6 +64,13 @@ class BikeShop(object):
         acceptable_bikes=manufacturer.manu_sale_price(manu_model) <= 700
         return inventory_list.append(acceptable_bikes)
         
+    def print_bought_bikes(self, bike, shop, manu_model):
+        for bike in shop.inventory_list:
+            if self.buy_bike_from_manu(manu_model):
+                print "{} bought a {}, model: {}" .format (self.shop_name, manufacturer.manu_name, manufacturer.model_name)
+            
+    
+    
 inventory_list = [
     bike1, bike2, bike3, bike4, bike5, bike6
 ]
@@ -137,20 +144,20 @@ class Bicycle_Manufacturers(object):
         self.manu_margin_amount = manu_margin_amount
         self.manu_sale_price = manu_sale_price
         
-        
+    
+    def manu_sale_price(self, model, manufacturer):
+        return manufacturer.cost_to_produce(model) + manufacturer.cost_to_produce(model) * manufacturer.manu_margin_amount   
      
 first_manufacturer = Bicycle_Manufacturers("Trek Inc.", model_list, manu_cost_to_produce , manu_margin_amount, manu_sale_price)
 
-    Bike_produced1 = Bicycle_Manufacturers("Trek", "Trek1", 850, .10)
-    Bike_produced2 = Bicycle_Manufacturers("Trek", "Trek2", 870, .10)
-    Bike_produced3 = Bicycle_Manufacturers("Trek", "Trek3", 890, .10)
+#should this be a new class Manufacturer_models?
+Bike_produced1 = Bicycle_Manufacturers("Trek", "Trek1", 850, .10)
+Bike_produced2 = Bicycle_Manufacturers("Trek", "Trek2", 870, .10)
+Bike_produced3 = Bicycle_Manufacturers("Trek", "Trek3", 890, .10)
     
 model_list = [Bike_produced1, Bike_produced2, Bike_produced3]
     
     
 
-    def manu_sale_price(self, model, manufacturer):
-        return manufacturer.cost_to_produce(model) + manufacturer.cost_to_produce(model) * manufacturer.manu_margin_amount
-        
     
       
