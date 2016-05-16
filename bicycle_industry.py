@@ -60,7 +60,10 @@ class BikeShop(object):
             sale_price = self.sale_price(bike)
             print("{} has an msrp is ${} and {} makes ${} off each sale.".format(bike.model_name, sale_price, self.shop_name, profit_amount))
 
-
+    def buy_bike_from_manu(self,manu_model_range, manu_model):
+        acceptable_bikes=manufacturer.manu_sale_price(manu_model) <= 700
+        return inventory_list.append(acceptable_bikes)
+        
 inventory_list = [
     bike1, bike2, bike3, bike4, bike5, bike6
 ]
@@ -86,15 +89,19 @@ class Customer(object):
     def __repr__(self):
         return "{0} has ${1}.".format(
             self.customer_name, self.customer_funds)
+            
 
-    def can_afford(self, shop, bike):
-        bike_price = shop.sale_price(bike)
-        return self.customer_funds >= bike_price
+    def can_afford(self, shop, bike): #determines what bikes can be afforded from the shop
+        bike_price = shop.sale_price(bike) #"the shop's sale price of the bike"
+        return self.customer_funds >= bike_price #returns the customers, customer funds that are greater than the bike price
 
     def print_affordable_bikes(self, shop):
         for bike in shop.shop_inventory:
-            if self.can_afford(shop, bike):
+            if self.can_afford(shop, bike): #if customer can afford the bike of the shop
                 print "{0} can afford the {1}".format(self.customer_name, bike.model_name)
+                
+                
+                
 
 customer1 = Customer("Joe", 200)
 customer2 = Customer("Bill", 500)
@@ -123,17 +130,27 @@ for customer in customer_list:
 print '-' * 20
     
 class Bicycle_Manufacturers(object):
-    def __init__(self, manu_name, manu_model, manu_cost_to_produce, manu_margin_amount):
+    def __init__(self, manu_name, manu_model_range, manu_cost_to_produce, manu_margin_amount, manu_sale_price):
         self.manu_name = manu_name
-        self.manu_modle = manu_model
-        self. manu_margin_amount = manu_margin_amount
+        self.manu_model_range = manu_model_range
+        self.manu_cost_to_produce = manu_cost_to_produce
+        self.manu_margin_amount = manu_margin_amount
+        self.manu_sale_price = manu_sale_price
         
         
      
+first_manufacturer = Bicycle_Manufacturers("Trek Inc.", model_list, manu_cost_to_produce , manu_margin_amount, manu_sale_price)
 
     Bike_produced1 = Bicycle_Manufacturers("Trek", "Trek1", 850, .10)
     Bike_produced2 = Bicycle_Manufacturers("Trek", "Trek2", 870, .10)
     Bike_produced3 = Bicycle_Manufacturers("Trek", "Trek3", 890, .10)
     
-model_range = [Bike_produced1, Bike_produced2, Bike_produced3]
-    def manu_sale_price(self,)
+model_list = [Bike_produced1, Bike_produced2, Bike_produced3]
+    
+    
+
+    def manu_sale_price(self, model, manufacturer):
+        return manufacturer.cost_to_produce(model) + manufacturer.cost_to_produce(model) * manufacturer.manu_margin_amount
+        
+    
+      
